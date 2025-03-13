@@ -1,6 +1,11 @@
 package com.example.bike.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "usuarios")
 public class Usuario {
+    @PrimaryKey(autoGenerate = true)
 
     private int id;
     private String nome;
@@ -9,8 +14,8 @@ public class Usuario {
     private String telefone;
 
     // Construtor / Constructor
-    public Usuario(int id, String nome, String email, String senha, String telefone) {
-        this.id = id;
+    public Usuario(String nome, String email, String senha, String telefone) {
+        // não precisa colocar o ID porque já é gerado automaticamente
         this.nome = nome;
         this.email = email;
         this.senha = senha;
