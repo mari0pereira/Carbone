@@ -1,9 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Bike" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+    <!-- Tema Claro -->
+    <style name="Theme.Bike" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-    <style name="Theme.Bike" parent="Base.Theme.Bike" />
+        <!-- Cor primária -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
