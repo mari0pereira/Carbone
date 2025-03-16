@@ -2,29 +2,184 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/backgroundColor"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
+    <!-- header -->
+    <include layout="@layout/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-    <!-- Incluir o header -->
-    <include
-        android:id="@+id/header"
-        layout="@layout/header" />
-
-    <!-- Conteúdo principal do app -->
+    <!-- ScrollView para permitir rolagem -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!-- Conteúdo do aplicativo vai aqui -->
+
+            <!-- Seção Sense -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
+
+                <!-- Imagem de fundo da bicicleta -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bike1"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Imagem de uma bicicleta" />
+
+                <!-- Camada escura para melhorar contraste dos textos -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/dark_gradient" />
+
+                <!-- Textos e botão -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="bottom|start">
+
+                    <!--  subtítulo BIKE PASSION -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BIKE PASSION"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- título "SENSE" -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SENSE"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Paragráfo -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Feito por quem pedala, para quem pedala"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="24dp" />
+
+                    <!-- botão SABER MAIS -->
+                    <TextView
+                        android:id="@+id/btn_saber_mais_sense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/saber_mais"
+                        android:textColor="@color/black"
+                        android:background="@drawable/button_background"
+                        android:paddingStart="24dp"
+                        android:paddingEnd="24dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"/>
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Seção Swift -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
+
+                <!-- Imagem de fundo com as peças da bicicleta -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/pecas_bike"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Imagem de peças de bicicleta Swift" />
+
+                <!-- Camada escura para melhorar contraste dos textos -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/dark_gradient" />
+
+                <!-- Textos e botão -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="bottom|start">
+
+                    <!--  subtítulo "AN EXCEPTIONAL RIDE" -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AN EXCEPTIONAL RIDE"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- título "SWIFT" -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SWIFT"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Paragráfo -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Crafted in Portugal, Ridden Worldwide"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="24dp" />
+
+                    <!-- botão SABER MAIS -->
+                    <TextView
+                        android:id="@+id/btn_saber_mais_swift"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/saber_mais"
+                        android:textColor="@color/black"
+                        android:background="@drawable/button_background"
+                        android:paddingStart="24dp"
+                        android:paddingEnd="24dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"/>
+
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
