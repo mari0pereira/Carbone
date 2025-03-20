@@ -87,12 +87,7 @@
                         android:id="@+id/button1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:text="@string/saber_mais"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:text="SABER MAIS" />
 
                 </LinearLayout>
             </FrameLayout>
@@ -155,11 +150,19 @@
                         android:textSize="18sp" />
 
                     <!-- botão SABER MAIS -->
-                    <Button
-                        android:id="@+id/button2"
+                    <TextView
+                        android:id="@+id/btn_saber_mais_swift"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/button_background"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingStart="24dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="24dp"
+                        android:paddingBottom="12dp"
                         android:text="@string/saber_mais"
                         android:textColor="@color/black"
                         android:textSize="14sp"

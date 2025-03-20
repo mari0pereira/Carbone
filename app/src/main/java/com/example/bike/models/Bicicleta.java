@@ -20,7 +20,7 @@ public class Bicicleta {
     // Construtor / Constructor
     public Bicicleta(String nome, String descricao, String categoria, int modelo,
                      double preco, String imageUrl, String especificacoes) {
-        // não precisa colocar o ID porque já é gerado automaticamente
+        // não precisa colocar o ID, porque já é gerado automaticamente
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;

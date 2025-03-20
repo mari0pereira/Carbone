@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        layout="@layout/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+
+        <!-- Imagem de fundo da bicicleta -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Imagem de uma bicicleta"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bike1" />
+
+        <!-- Camada escura para melhorar contraste dos textos -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/dark_gradient" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="554dp"
+                android:gravity="center"
+                android:text="A paixão por bicicletas é mais do que apenas pedalar – é um estilo de vida, um escape, uma conexão com a natureza e até mesmo uma forma de expressão pessoal. Para muitos, ela representa liberdade, aventura e a emoção de explorar novos horizontes. Cada trilha percorrida, cada vento no rosto e cada desafio superado no pedal cria histórias únicas e memórias inesquecíveis.
+Além disso, o universo das bikes é diverso: existem aqueles que amam o ciclismo de estrada, outros que preferem a adrenalina do mountain bike, ou mesmo a simplicidade de um passeio relaxante pela cidade. Seja qual for o estilo, essa paixão une pessoas e gera uma comunidade vibrante de entusiastas. A cultura da bicicleta é uma comunidade fascinante e diversa que une pessoas de diferentes origens, movidas pela paixão por pedalar. Ela representa liberdade, sustentabilidade, criatividade e companheirismo. Aqui estão alguns aspectos que tornam essa cultura tão única: Sustentabilidade e Consciência Ecológica: Muitos ciclistas veem o amor pelas bicicletas como uma forma de reduzir a pegada de carbono e promover cidades mais verdes, com infraestrutura como ciclovias e políticas de transporte sustentável. Aventura e Exploração: Para alguns, pedalar significa explorar trilhas desconhecidas, aventurar-se em lugares remotos ou desafiar-se com longas distâncias. Eventos como bikepacking e corridas de resistência destacam esse espírito aventureiro."
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="500dp"
+                android:background="@color/white"
+                android:gravity="end"
+                android:text="Voltar"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+    </ScrollView>
+</LinearLayout>
