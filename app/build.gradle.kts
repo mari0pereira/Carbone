@@ -38,8 +38,6 @@ android {
 
 
 dependencies {
-    implementation(libs.glide)
-    annotationProcessor(libs.glideCompiler) // Alterado para `glideCompiler`
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
     implementation(libs.appcompat)
