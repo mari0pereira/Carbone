@@ -4,6 +4,8 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Delete;
 import androidx.room.Query;
+import androidx.room.Update;
+
 import com.example.bike.models.Bicicleta;
 import java.util.List;
 
@@ -16,6 +18,10 @@ public interface BicicletaDAO {
     // Excluir uma bicicleta
     @Delete
     void delete(Bicicleta bicicleta);
+
+    // Alterar os dados da bicicleta
+    @Update
+    void update(Bicicleta bicicleta);
 
     // Buscar todas as bicicleta
     @Query("SELECT * FROM bicicletas")
