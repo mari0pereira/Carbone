@@ -19,16 +19,9 @@ public class Bicicleta {
     private String imageUrl; // URL da imagem da bike
     private String especificacoes;// Especificações técnicas da bicicleta
 
-<<<<<<< HEAD
     // Construtor
     public Bicicleta(String nome, int modelo, String tamanho, String categoria, double preco,
                      String imageUrl, String especificacoes) {
-=======
-    // Construtor / Constructor
-    public Bicicleta(String nome, String descricao, String categoria, int modelo,
-                     double preco, String imageUrl, String especificacoes) {
-        // não precisa colocar o ID, porque já é gerado automaticamente
->>>>>>> 3bbc52ef55c4b838b76e9e2cb4abb1ea17526c5e
         this.nome = nome;
         this.modelo = modelo;
         this.tamanho = tamanho;

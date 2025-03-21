@@ -23,7 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
 
         <activity
             android:name=".LoginActivity"
@@ -36,17 +35,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-=======
-        <activity
-            android:name=".Sabermais"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.SABERMAIS" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
->>>>>>> 3bbc52ef55c4b838b76e9e2cb4abb1ea17526c5e
     </application>
 
 </manifest>

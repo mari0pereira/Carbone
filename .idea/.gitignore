@@ -1,3 +1,11 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+# Arquivos do Android Studio que não devem ser enviados
+.gradle/
+.idea/
+*.iml
+/local.properties
+/build/
+captures/

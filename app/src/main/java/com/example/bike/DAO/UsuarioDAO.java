@@ -2,7 +2,6 @@ package com.example.bike.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
-import androidx.room.Update;
 import androidx.room.Delete;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -31,8 +30,13 @@ public interface UsuarioDAO {
 
     @Delete
     void delete(Usuario usuario);
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+
+    // Alterar os dados do Usuário
+    @Update
+    void update(Usuario usuario);
 
     // Alterar os dados do Usuário
     @Update
@@ -42,4 +46,6 @@ public interface UsuarioDAO {
     @Query("SELECT * FROM usuarios")
     List<Usuario> getAllUsuarios();
 >>>>>>> 3bbc52ef55c4b838b76e9e2cb4abb1ea17526c5e
+=======
+>>>>>>> Stashed changes
 }
