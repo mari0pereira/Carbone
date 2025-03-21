@@ -34,12 +34,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    viewBinding{
+        enable = true
+    }
 }
 
 
 dependencies {
-    implementation(libs.glide)
-    annotationProcessor(libs.glideCompiler) // Alterado para `glideCompiler`
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
     implementation(libs.appcompat)

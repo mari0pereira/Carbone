@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Section SENSE -->
+            <!-- Seção Sense -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="500dp">
@@ -72,7 +72,7 @@
                         android:textSize="40sp"
                         android:textStyle="bold" />
 
-                    <!-- Frase -->
+                    <!-- Paragráfo -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -82,28 +82,17 @@
                         android:textSize="18sp" />
 
                     <!-- botão SABER MAIS -->
-<<<<<<< HEAD
-                    <!-- BUG BUTTON -->
-                    <TextView
-                        android:id="@+id/btn_saber_mais_sense"
-=======
 
                     <Button
                         android:id="@+id/button1"
->>>>>>> 3bbc52ef55c4b838b76e9e2cb4abb1ea17526c5e
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:text="@string/saber_mais"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:text="SABER MAIS" />
 
                 </LinearLayout>
             </FrameLayout>
 
-            <!-- Section SWIFT -->
+            <!-- Seção Swift -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="500dp">
@@ -151,7 +140,7 @@
                         android:textSize="40sp"
                         android:textStyle="bold" />
 
-                    <!-- Frase -->
+                    <!-- Paragráfo -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -161,17 +150,19 @@
                         android:textSize="18sp" />
 
                     <!-- botão SABER MAIS -->
-<<<<<<< HEAD
-                    <!-- BUG BUTTON -->
                     <TextView
                         android:id="@+id/btn_saber_mais_swift"
-=======
-                    <Button
-                        android:id="@+id/button2"
->>>>>>> 3bbc52ef55c4b838b76e9e2cb4abb1ea17526c5e
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/button_background"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingStart="24dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="24dp"
+                        android:paddingBottom="12dp"
                         android:text="@string/saber_mais"
                         android:textColor="@color/black"
                         android:textSize="14sp"

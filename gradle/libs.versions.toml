@@ -12,7 +12,6 @@ roomRuntime = "2.6.1"
 roomCompiler = "2.6.1"
 roomRuntimeAndroid = "2.7.0-rc02"
 roomRuntimeJvm = "2.7.0-rc02"
-glide = "4.16.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -27,8 +26,6 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
 room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
 room-runtime-jvm = { group = "androidx.room", name = "room-runtime-jvm", version.ref = "roomRuntimeJvm" }
-glide = { group = "com.github.bumptech.glide", name = "glide", version = "4.16.0" }
-glideCompiler = { group = "com.github.bumptech.glide", name = "compiler", version = "4.16.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
