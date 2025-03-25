@@ -1,7 +1,3 @@
-<h1 align="center"> Sense Bike </h1>
-
-<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
-
 # Índice 
 
 * [Título e Imagem de capa](#Título-e-Imagem-de-capa)
@@ -16,3 +12,10 @@
 * [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
 * [Licença](#licença)
 * [Conclusão](#conclusão)
+
+
+<h1 align="center"> Sense Bike </h1>
+
+<p align="center"> </p>
+
+<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
