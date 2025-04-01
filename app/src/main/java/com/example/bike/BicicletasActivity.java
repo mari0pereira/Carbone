@@ -2,11 +2,7 @@ package com.example.bike;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.bike.dao.BicicletaDAO;
@@ -30,7 +26,7 @@ public class BicicletasActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Recupera a categoria da Intent
-        categoria = getIntent().getStringExtra("CATEGORIA");
+        categoria = getIntent().getStringExtra("categoria");
 
         // Inicializa o banco de dados
         db = appDatabase.getInstance(this);
@@ -42,13 +38,18 @@ public class BicicletasActivity extends AppCompatActivity {
 
         // Carrega as bicicletas em uma aba separada
         new Thread(() -> {
-            BicicletaDAO dao = db.bicicletaDAO();
-            final List<Bicicleta> bicicletas = dao.getBicicletasByCategoria(categoria);
+            try {
+                // Aguarda um momento para garantir que o banco foi inicializado
+                Thread.sleep(1000);
 
-            // Atualiza a UI na thread principal
-            runOnUiThread(() -> {
-                adapter.setBicicletas(bicicletas);
-            });
+                BicicletaDAO dao = db.bicicletaDAO();
+                final List<Bicicleta> bicicletas = dao.getBicicletasByCategoria(categoria);
+
+                // Atualiza a UI na thread principal
+                runOnUiThread(() -> adapter.setBicicletas(bicicletas));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }).start();
     }
 }

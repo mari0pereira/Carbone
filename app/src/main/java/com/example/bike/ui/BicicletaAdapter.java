@@ -1,5 +1,6 @@
 package com.example.bike.ui;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -40,6 +41,7 @@ public class BicicletaAdapter extends RecyclerView.Adapter<BicicletaViewHolder> 
         return bicicletas.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setBicicletas(List<Bicicleta> bicicletas) {
         this.bicicletas = bicicletas;
         notifyDataSetChanged();
