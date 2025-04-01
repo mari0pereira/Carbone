@@ -11,11 +11,15 @@ import java.util.List;
 
 @Dao
 public interface BicicletaDAO {
+
     @Query("SELECT * FROM bicicletas")
     List<Bicicleta> getAll();
 
     @Query("SELECT * FROM bicicletas WHERE categoria = :categoria")
-    List<Bicicleta> getBicicletasPorCategoria(String categoria);
+    List<Bicicleta> getBicicletasByCategoria(String categoria);
+
+    @Query("SELECT * FROM bicicletas WHERE id = :id")
+    Bicicleta getBicicletaById(int id);
 
     @Insert
     void insert(Bicicleta bicicleta);
@@ -25,4 +29,6 @@ public interface BicicletaDAO {
 
     @Delete
     void delete(Bicicleta bicicleta);
+
+
 }

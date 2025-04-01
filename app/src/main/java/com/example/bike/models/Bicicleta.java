@@ -3,8 +3,6 @@ package com.example.bike.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.io.Serializable;
-
 @Entity(tableName = "bicicletas")
 public class Bicicleta {
     @PrimaryKey(autoGenerate = true)
@@ -12,23 +10,27 @@ public class Bicicleta {
     private int id;
 
     private String nome;
-    private int modelo; // Ex: 2025
-    private String tamanho; // Tamanho do quadro (P, M, G)
-    private String categoria; // Ex: Mountain Bike, Gravel, E-MTB, Urbanas
+    private int modelo; // Ex: 2025, 3
     private double preco;
-    private String imageUrl; // URL da imagem da bike
+    private int imageUrl;   // URL da imagem da bike ou (R.drawable.*)
+    private String cor;
+    private String tamanho; // Tamanho do quadro (P, M, G)
+    private String descricao;  // Descrição para o catálogo
     private String especificacoes;// Especificações técnicas da bicicleta
+    private String categoria; // Ex: Mountain Bike, Gravel
 
     // Construtor
-    public Bicicleta(String nome, int modelo, String tamanho, String categoria, double preco,
-                     String imageUrl, String especificacoes) {
+    public Bicicleta(String nome, int modelo, double preco, int imageUrl, String cor,
+                     String tamanho, String descricao, String especificacoes, String categoria) {
         this.nome = nome;
         this.modelo = modelo;
-        this.tamanho = tamanho;
-        this.categoria = categoria;
         this.preco = preco;
         this.imageUrl = imageUrl;
+        this.cor = cor;
+        this.tamanho = tamanho;
+        this.descricao = descricao;
         this.especificacoes = especificacoes;
+        this.categoria = categoria;
     }
 
     // Getters e Setters
@@ -56,22 +58,6 @@ public class Bicicleta {
         this.modelo = modelo;
     }
 
-    public String getTamanho() {
-        return tamanho;
-    }
-
-    public void setTamanho(String tamanho) {
-        this.tamanho = tamanho;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
     public double getPreco() {
         return preco;
     }
@@ -80,12 +66,36 @@ public class Bicicleta {
         this.preco = preco;
     }
 
-    public String getImageUrl() {
+    public int getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(int imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getEspecificacoes() {
@@ -94,5 +104,13 @@ public class Bicicleta {
 
     public void setEspecificacoes(String especificacoes) {
         this.especificacoes = especificacoes;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             // Verificar se o usuário está logado
             SharedPreferences prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
-            boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
+            boolean isLoggedIn = prefs.getBoolean("Logado", false);
 
             Intent intent;
             if (isLoggedIn) {

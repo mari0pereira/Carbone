@@ -10,19 +10,26 @@ import com.example.bike.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-            binding = ActivityMainBinding.inflate(getLayoutInflater());
-            setContentView(binding.getRoot());
+        // Configura o ViewBinding
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-           // binding.btnSaberMaisSense.setOnClickListener(v -> {
-                // CLICK no botão "SABER MAIS" na seção da Sense
-           // });
+        // Direciona para a página Mountain Bike
+        binding.btnMTB.setOnClickListener(v -> {
+            Intent intent = new Intent(this, BicicletasActivity.class);
+            intent.putExtra("categoria", "Mountain Bike");
+            startActivity(intent);
+        });
 
-          //  binding.btnSaberMaisSwift.setOnClickListener(v -> {
-                // CLICK no botão "SABER MAIS" na seção da Swift
-           // });
-        }
+        // Direciona para a página Gravel
+        binding.btnGravel.setOnClickListener(v -> {
+            Intent intent = new Intent(this, BicicletasActivity.class);
+            intent.putExtra("categoria", "Gravel");
+            startActivity(intent);
+        });
     }
+}

@@ -28,8 +28,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // CADASTRO -----
         binding.textViewCadastro.setOnClickListener(v -> {
-        Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -47,9 +47,9 @@ public class LoginActivity extends AppCompatActivity {
 
             runOnUiThread(() -> {
                 if (usuario != null) {
-                    // Salvar estado de login
+                    // Salvar login
                     SharedPreferences prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
-                    prefs.edit().putBoolean("isLoggedIn", true).apply();
+                    prefs.edit().putBoolean("Logado", true).apply();
 
                     // Ir para MainActivity
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
