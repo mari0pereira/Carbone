@@ -10,7 +10,7 @@
  O projeto CARBONE foi criado com o intuito de ser um app simples e útil para a compra de bicicletas e peças separadas. 
 </p>
 <h2>
-  Como instalar e Abrir o porjeto
+  Como instalar e Abrir o projeto
 </h2>
 <p>
   Para instalar os arquivos do projeto basta clonar e fazer o download em ZIP. 🗂 <br><br>
