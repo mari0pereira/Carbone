@@ -3,34 +3,34 @@ package com.example.bike.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "bicicletas")
-public class Bicicleta {
-    @PrimaryKey(autoGenerate = true)
+import java.io.Serializable;
 
+public class Bicicleta implements Serializable {
     private int id;
-
     private String nome;
-    private int modelo; // Ex: 2025, 3
+    private String modelo;
     private double preco;
-    private int imageUrl;   // URL da imagem da bike ou (R.drawable.*)
     private String cor;
-    private String tamanho; // Tamanho do quadro (P, M, G)
-    private String descricao;  // Descrição para o catálogo
-    private String especificacoes;// Especificações técnicas da bicicleta
-    private String categoria; // Ex: Mountain Bike, Gravel
+    private String tamanho;
+    private String descricao;
+    private String especificacoes;
+    private String categoria;
+    private String imageUrl;
 
     // Construtor
-    public Bicicleta(String nome, int modelo, double preco, int imageUrl, String cor,
-                     String tamanho, String descricao, String especificacoes, String categoria) {
+    public Bicicleta(int id, String nome, String modelo, double preco, String cor,
+                     String tamanho, String descricao, String especificacoes,
+                     String categoria, String imageUrl) {
+        this.id = id;
         this.nome = nome;
         this.modelo = modelo;
         this.preco = preco;
-        this.imageUrl = imageUrl;
         this.cor = cor;
         this.tamanho = tamanho;
         this.descricao = descricao;
         this.especificacoes = especificacoes;
         this.categoria = categoria;
+        this.imageUrl = imageUrl;
     }
 
     // Getters e Setters
@@ -50,11 +50,11 @@ public class Bicicleta {
         this.nome = nome;
     }
 
-    public int getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(int modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
@@ -64,14 +64,6 @@ public class Bicicleta {
 
     public void setPreco(double preco) {
         this.preco = preco;
-    }
-
-    public int getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(int imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public String getCor() {
@@ -112,5 +104,18 @@ public class Bicicleta {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - " + modelo;
     }
 }

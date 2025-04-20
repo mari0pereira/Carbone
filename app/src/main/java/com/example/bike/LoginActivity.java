@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bike.MainActivity;
 import com.example.bike.database.appDatabase;
 import com.example.bike.databinding.ActivityLoginBinding;
 import com.example.bike.models.Usuario;
+import com.example.bike.utils.Validador;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
@@ -42,14 +42,28 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        // Validar formato do email
+        if (!Validador.isEmailValido(email)) {
+            binding.editTextEmail.setError("Email inválido");
+            return;
+        }
+
+        // Hash da senha para comparação
+        String senhaHash = Validador.hashSenha(senha);
+
         new Thread(() -> {
-            Usuario usuario = db.usuarioDAO().login(email, senha);
+            // Busca pelo email e senha com hash
+            Usuario usuario = db.usuarioDAO().loginComHash(email, senhaHash);
 
             runOnUiThread(() -> {
                 if (usuario != null) {
                     // Salvar login
                     SharedPreferences prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
-                    prefs.edit().putBoolean("Logado", true).apply();
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("Logado", true);
+                    editor.putInt("UsuarioId", usuario.getId());
+                    editor.putString("UsuarioNome", usuario.getNome());
+                    editor.apply();
 
                     // Ir para MainActivity
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);

@@ -16,16 +16,21 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // VIEWBINDING
+ 
+        // Infla
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Aguardar um curto período (opcional, para mostrar uma tela de splash)
+        // Aguardar um curto período (para mostrar uma tela de splash)
         new Handler().postDelayed(() -> {
             // Verificar se o usuário está logado
             SharedPreferences prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
             boolean isLoggedIn = prefs.getBoolean("Logado", false);
+
+            // Atualizar o BikeSession com o estado do login
+            if (isLoggedIn) {
+                ((BikeSession) getApplication()).login();
+            }
 
             Intent intent;
             if (isLoggedIn) {

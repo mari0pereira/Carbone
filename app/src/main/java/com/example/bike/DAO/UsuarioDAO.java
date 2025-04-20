@@ -19,9 +19,11 @@ public interface UsuarioDAO {
     @Query("SELECT * FROM usuarios WHERE email = :email AND senha = :senha LIMIT 1")
     Usuario login(String email, String senha);
 
+    @Query("SELECT * FROM usuarios WHERE email = :email AND senha = :senhaHash LIMIT 1")
+    Usuario loginComHash(String email, String senhaHash);
+
     @Query("SELECT COUNT(*) FROM usuarios WHERE email = :email")
-    int checkEmailExists(String email); // Verifica se já existe algum usuário com o email fornecido,
-    // retornando a contagem (0 se não existir, número maior que 0 se existir).
+    int checkEmailExists(String email);
 
     @Insert
     void insert(Usuario usuario);
