@@ -9,20 +9,20 @@
     android:background="@drawable/dark_gradient">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:src="@drawable/sense"
-        app:tint="@color/white"
-        android:layout_marginBottom="32dp"
-        android:contentDescription="Logo Sense Bike" />
+        android:layout_width="218dp"
+        android:layout_height="122dp"
+        android:layout_marginBottom="35dp"
+        android:contentDescription="Logo Sense Bike"
+        android:src="@drawable/carbone"
+        app:tint="@color/black" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:text="Cadastro"
-        android:textStyle="bold"
         android:textSize="24sp"
-        android:layout_marginBottom="24dp" />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextNome"

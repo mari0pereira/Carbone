@@ -31,9 +31,9 @@
         <ImageView
             android:id="@+id/logo_sense"
             android:layout_width="150dp"
-            android:layout_height="36dp"
-            android:src="@drawable/sense"
-            android:contentDescription="Logo Sense"
+            android:layout_height="100dp"
+            android:src="@drawable/carbone"
+            android:contentDescription="Logo Carbone"
             app:tint="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

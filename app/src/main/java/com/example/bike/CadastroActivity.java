@@ -5,27 +5,34 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bike.database.appDatabase;
+import com.example.bike.api.ApiService;
 import com.example.bike.databinding.ActivityCadastroBinding;
 import com.example.bike.models.Usuario;
 import com.example.bike.utils.Validador;
 
+/**
+ * Utiliza a API para cadastrar o usuário no servidor
+ */
 public class CadastroActivity extends AppCompatActivity {
     private ActivityCadastroBinding binding;
-    private appDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Inicia o ViewBinding
         binding = ActivityCadastroBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        db = appDatabase.getInstance(this);
-
+        // Click do botão de cadastro
         binding.btnCadastrar.setOnClickListener(v -> realizarCadastro());
     }
 
+    /**
+     * Realiza o cadastro do usuário com validação de campos e integração com a API
+     */
     private void realizarCadastro() {
+        // Obtém os valores dos campos
         String nome = binding.editTextNome.getText().toString();
         String email = binding.editTextEmailCadastro.getText().toString();
         String senha = binding.editTextSenhaCadastro.getText().toString();
@@ -37,7 +44,7 @@ public class CadastroActivity extends AppCompatActivity {
             return;
         }
 
-        // Validação com expressões regulares
+        // Validação
         if (!Validador.isEmailValido(email)) {
             binding.editTextEmailCadastro.setError("Email inválido");
             return;
@@ -56,24 +63,25 @@ public class CadastroActivity extends AppCompatActivity {
         // Hash da senha antes de armazenar
         String senhaHash = Validador.hashSenha(senha);
 
-        new Thread(() -> {
-            int emailExists = db.usuarioDAO().checkEmailExists(email);
-
-            if (emailExists > 0) {
-                runOnUiThread(() ->
-                        Toast.makeText(this, "Email já cadastrado", Toast.LENGTH_SHORT).show()
-                );
+        // Verificar se o email já existe
+        ApiService.checkEmailExists(email, exists -> {
+            if (exists) {
+                Toast.makeText(CadastroActivity.this, "Email já cadastrado", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Usa a senha com hash em vez da senha em texto plano
+            // Criar novo usuário com a senha com hash
             Usuario novoUsuario = new Usuario(nome, email, senhaHash, telefone);
-            db.usuarioDAO().insert(novoUsuario);
 
-            runOnUiThread(() -> {
-                Toast.makeText(this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
-                finish();
+            // Cadastrar usuário via API
+            ApiService.cadastrarUsuario(novoUsuario, success -> {
+                if (success) {
+                    Toast.makeText(CadastroActivity.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+                    finish(); // Volta para a tela anterior
+                } else {
+                    Toast.makeText(CadastroActivity.this, "Erro ao cadastrar usuário", Toast.LENGTH_SHORT).show();
+                }
             });
-        }).start();
+        });
     }
 }

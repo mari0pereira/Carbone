@@ -5,51 +5,54 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.bike.dao.BicicletaDAO;
-import com.example.bike.database.appDatabase;
+import com.example.bike.api.ApiService;
 import com.example.bike.databinding.ActivityBicicletasBinding;
-import com.example.bike.models.Bicicleta;
 import com.example.bike.ui.BicicletaAdapter;
 
-import java.util.List;
-
+/**
+ * Activity que exibe uma lista de bicicletas por categoria
+ * Usa a API para buscar os dados do servidor
+ */
 public class BicicletasActivity extends AppCompatActivity {
     private ActivityBicicletasBinding binding;
-    private appDatabase db;
     private String categoria;
     private BicicletaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Inicializa o ViewBinding
         binding = ActivityBicicletasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Recupera a categoria da Intent
         categoria = getIntent().getStringExtra("categoria");
 
-        // Inicializa o banco de dados
-        db = appDatabase.getInstance(this);
-
         // Configura o RecyclerView e adapter
         adapter = new BicicletaAdapter();
         binding.recyclerBikes.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerBikes.setAdapter(adapter);
 
-        // Carrega as bicicletas em uma aba separada
-        new Thread(() -> {
-            try {
-                // Aguarda um momento para garantir que o banco foi inicializado
-                Thread.sleep(1000);
+        // Carrega as bicicletas da API
+        carregarBicicletas();
+    }
 
-                BicicletaDAO dao = db.bicicletaDAO();
-                final List<Bicicleta> bicicletas = dao.getBicicletasByCategoria(categoria);
+    /**
+     * Carrega as bicicletas da API através da categoria selecionada
+     * Exemplo: Gravel, Mountain Bike
+     */
+    private void carregarBicicletas() {
+        // Chama a API para buscar as bicicletas
+        ApiService.getBicicletas(categoria, bicicletas -> {
 
-                // Atualiza a UI na thread principal
-                runOnUiThread(() -> adapter.setBicicletas(bicicletas));
-            } catch (Exception e) {
-                e.printStackTrace();
+            // Atualiza o adapter com os dados
+            adapter.setBicicletas(bicicletas);
+
+            // Se não houver resultados, exibe uma mensagem
+            if (bicicletas.isEmpty()) {
+                // Em breve
             }
-        }).start();
+        });
     }
 }

@@ -9,11 +9,11 @@
     android:background="@drawable/dark_gradient">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:src="@drawable/sense"
-        app:tint="@color/white"
-        android:layout_marginBottom="32dp"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:src="@drawable/carbone"
+        app:tint="@color/black"
+        android:layout_marginBottom="30dp"
         android:contentDescription="Logo Sense Bike" />
 
     <EditText

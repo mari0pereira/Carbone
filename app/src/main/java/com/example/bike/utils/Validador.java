@@ -11,11 +11,11 @@ public class Validador {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
     private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
-    // Expressão regular para validar senha (mínimo 6 caracteres, pelo menos 1 letra e 1 número)
+    // Expressão para validar senha (mínimo 6 caracteres, pelo menos 1 letra e 1 número)
     private static final String SENHA_REGEX = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$";
     private static final Pattern SENHA_PATTERN = Pattern.compile(SENHA_REGEX);
 
-    // Expressão regular para validar telefone brasileiro
+    // Expressão para validar telefone BR
     private static final String TELEFONE_REGEX = "^\\(?[1-9]{2}\\)? ?(?:[2-8]|9[1-9])[0-9]{3}\\-?[0-9]{4}$";
     private static final Pattern TELEFONE_PATTERN = Pattern.compile(TELEFONE_REGEX);
 

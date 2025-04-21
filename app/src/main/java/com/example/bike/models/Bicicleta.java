@@ -5,7 +5,13 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+@Entity(tableName = "bicicletas")
 public class Bicicleta implements Serializable {
+    // Serializable para passar o objeto Bicicleta entre Activities
+    // -> Quando um item é clicado, passa o objeto Bicicleta (Serializable) para a tela de detalhes,
+    // Será implementada em breve -- Talvez com Nav. compose e Paginação.
+
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String nome;
     private String modelo;

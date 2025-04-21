@@ -6,37 +6,44 @@ import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bike.database.appDatabase;
+import com.example.bike.api.ApiService;
 import com.example.bike.databinding.ActivityLoginBinding;
 import com.example.bike.models.Usuario;
 import com.example.bike.utils.Validador;
 
+/**
+ * Utiliza a API para autenticar e BikeSession para gerenciar o estado de login
+ */
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
-    private appDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Inicializa o ViewBinding
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        db = appDatabase.getInstance(this);
-
         // Botão de login
-        binding.btnLogin.setOnClickListener(v -> RealizarLogin());
+        binding.btnLogin.setOnClickListener(v -> realizarLogin());
 
-        // CADASTRO -----
+        // Botão de cadastro
         binding.textViewCadastro.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
             startActivity(intent);
         });
     }
 
-    private void RealizarLogin() {
+    /**
+     * Realiza o login do usuário com validação e integração com a API
+     */
+    private void realizarLogin() {
+        // Obtém os valores dos campos
         String email = binding.editTextEmail.getText().toString();
         String senha = binding.editTextSenha.getText().toString();
 
+        // Validação de campos vazios
         if (email.isEmpty() || senha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
@@ -51,28 +58,27 @@ public class LoginActivity extends AppCompatActivity {
         // Hash da senha para comparação
         String senhaHash = Validador.hashSenha(senha);
 
-        new Thread(() -> {
-            // Busca pelo email e senha com hash
-            Usuario usuario = db.usuarioDAO().loginComHash(email, senhaHash);
+        // Realiza login via API
+        ApiService.login(email, senhaHash, usuario -> {
+            if (usuario != null) {
+                // Atualiza o BikeSession
+                ((BikeSession) getApplication()).login();
 
-            runOnUiThread(() -> {
-                if (usuario != null) {
-                    // Salvar login
-                    SharedPreferences prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putBoolean("Logado", true);
-                    editor.putInt("UsuarioId", usuario.getId());
-                    editor.putString("UsuarioNome", usuario.getNome());
-                    editor.apply();
+                // Salva informações no SharedPreferences
+                SharedPreferences prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("Logado", true);
+                editor.putInt("UsuarioId", usuario.getId());
+                editor.putString("UsuarioNome", usuario.getNome());
+                editor.apply();
 
-                    // Ir para MainActivity
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(this, "Email ou senha incorretos", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }).start();
+                // Ir para MainActivity
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish(); // Encerra a activity atual
+            } else {
+                Toast.makeText(this, "Email ou senha incorretos", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
