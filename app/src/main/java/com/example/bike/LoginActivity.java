@@ -8,18 +8,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bike.api.ApiService;
 import com.example.bike.databinding.ActivityLoginBinding;
-import com.example.bike.models.Usuario;
 import com.example.bike.utils.Validador;
 
-/**
- * Utiliza a API para autenticar e BikeSession para gerenciar o estado de login
- */
+// Utiliza a API para autenticar e BikeSession para gerenciar o estado de login
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Inicializa a API Service
+        ApiService.init(getApplicationContext());
 
         // Inicializa o ViewBinding
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
@@ -35,15 +35,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Realiza o login do usuário com validação e integração com a API
-     */
+    // Realiza o login do usuário com validação e integração com a API
     private void realizarLogin() {
-        // Obtém os valores dos campos
         String email = binding.editTextEmail.getText().toString();
         String senha = binding.editTextSenha.getText().toString();
 
-        // Validação de campos vazios
         if (email.isEmpty() || senha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
@@ -55,11 +51,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Hash da senha para comparação
-        String senhaHash = Validador.hashSenha(senha);
-
         // Realiza login via API
-        ApiService.login(email, senhaHash, usuario -> {
+        ApiService.login(email, senha, usuario -> {
             if (usuario != null) {
                 // Atualiza o BikeSession
                 ((BikeSession) getApplication()).login();

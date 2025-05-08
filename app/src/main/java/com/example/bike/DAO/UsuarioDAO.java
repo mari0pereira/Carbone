@@ -16,11 +16,11 @@ public interface UsuarioDAO {
     @Query("SELECT * FROM usuarios")
     List<Usuario> getAll();
 
+    @Query("SELECT * FROM usuarios WHERE email = :email LIMIT 1")
+    Usuario getUsuarioByEmail(String email);
+
     @Query("SELECT * FROM usuarios WHERE email = :email AND senha = :senha LIMIT 1")
     Usuario login(String email, String senha);
-
-    @Query("SELECT * FROM usuarios WHERE email = :email AND senha = :senhaHash LIMIT 1")
-    Usuario loginComHash(String email, String senhaHash);
 
     @Query("SELECT COUNT(*) FROM usuarios WHERE email = :email")
     int checkEmailExists(String email);

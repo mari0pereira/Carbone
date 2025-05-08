@@ -3,15 +3,11 @@ package com.example.bike.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.io.Serializable;
 
 @Entity(tableName = "bicicletas")
-public class Bicicleta implements Serializable {
-    // Serializable para passar o objeto Bicicleta entre Activities
-    // -> Quando um item é clicado, passa o objeto Bicicleta (Serializable) para a tela de detalhes,
-    // Será implementada em breve -- Talvez com Nav. compose e Paginação.
-
+public class Bicicleta {
     @PrimaryKey(autoGenerate = true)
+
     private int id;
     private String nome;
     private String modelo;
@@ -20,14 +16,12 @@ public class Bicicleta implements Serializable {
     private String tamanho;
     private String descricao;
     private String especificacoes;
-    private String categoria;
+    private String categoria; // MTB, Gravel, etc.
     private String imageUrl;
 
     // Construtor
-    public Bicicleta(int id, String nome, String modelo, double preco, String cor,
-                     String tamanho, String descricao, String especificacoes,
-                     String categoria, String imageUrl) {
-        this.id = id;
+    public Bicicleta(String nome, String modelo, double preco, String cor, String tamanho,
+                     String descricao, String especificacoes, String categoria, String imageUrl) {
         this.nome = nome;
         this.modelo = modelo;
         this.preco = preco;
@@ -39,7 +33,7 @@ public class Bicicleta implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    // Getters e Setters
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -118,10 +112,5 @@ public class Bicicleta implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    @Override
-    public String toString() {
-        return nome + " - " + modelo;
     }
 }

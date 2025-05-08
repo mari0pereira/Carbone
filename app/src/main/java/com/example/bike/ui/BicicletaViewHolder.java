@@ -30,7 +30,7 @@ public class BicicletaViewHolder extends RecyclerView.ViewHolder {
         // Configura a descrição
         binding.txtDescricao.setText(bike.getDescricao());
 
-        // Configurar clique longo para excluir
+        // Configurar click para excluir
         itemView.setOnLongClickListener(v -> {
             if (clickListener != null) {
                 clickListener.onLongClick(bike);

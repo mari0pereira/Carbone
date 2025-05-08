@@ -15,7 +15,6 @@ public class Usuario {
 
     // Construtor
     public Usuario(String nome, String email, String senha, String telefone) {
-        // não precisa colocar o ID porque já é gerado automaticamente
         this.nome = nome;
         this.email = email;
         this.senha = senha;

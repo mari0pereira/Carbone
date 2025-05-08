@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">bike</string>
     <string name="saber_mais">SABER MAIS</string>
+    <string name="home">Home</string>
+    <string name="perfil">Perfil</string>
 </resources>

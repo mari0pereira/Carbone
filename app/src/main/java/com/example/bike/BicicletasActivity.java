@@ -40,7 +40,7 @@ public class BicicletasActivity extends AppCompatActivity {
 
     /**
      * Carrega as bicicletas da API através da categoria selecionada
-     * Exemplo: Gravel, Mountain Bike
+     * Exemplo: Gravel, Mountain Bike (MTB)
      */
     private void carregarBicicletas() {
         // Chama a API para buscar as bicicletas
@@ -55,4 +55,5 @@ public class BicicletasActivity extends AppCompatActivity {
             }
         });
     }
+
 }
