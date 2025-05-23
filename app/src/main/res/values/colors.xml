@@ -6,4 +6,7 @@
     <color name="gray">#B0B0B0</color>
     <color name="dark_gray">#1A1A1A</color>
     <color name="btn_saber_mais">#FFFFFF</color>
+    <color name="black2">#FF000000</color>
+    <color name="gray2">#FF808080</color>
+    <color name="light_gray">#FFE0E0E0</color>
 </resources>

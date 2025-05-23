@@ -5,13 +5,16 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 import com.example.bike.dao.BicicletaDAO;
 import com.example.bike.dao.UsuarioDAO;
-import com.example.bike.models.Bicicleta;
-import com.example.bike.models.Usuario;
+import com.example.bike.model.Bicicleta;
+import com.example.bike.model.Conversor;
+import com.example.bike.model.Usuario;
 
 @Database(entities = {Bicicleta.class, Usuario.class}, version = 1)
+@TypeConverters({Conversor.class})
 public abstract class appDatabase extends RoomDatabase {
     private static volatile appDatabase INSTANCE;
 

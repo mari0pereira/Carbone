@@ -16,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Verifica se o usuário está logado usando o BikeSession
-        if (!((BikeSession) getApplication()).isLoggedIn()) {
+        // Verifica se o usuário está logado
+        BikeSession bikeSession = (BikeSession) getApplication();
+        if (!bikeSession.isLoggedIn()) {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
             return;

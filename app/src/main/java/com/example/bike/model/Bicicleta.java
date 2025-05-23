@@ -1,26 +1,31 @@
-package com.example.bike.models;
+package com.example.bike.model;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.room.*;
+import androidx.room.TypeConverters;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
 
 @Entity(tableName = "bicicletas")
+@TypeConverters({Conversor.class})
 public class Bicicleta {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
+    @NotNull
 
-    private int id;
+    private String id;
     private String nome;
-    private String modelo;
-    private double preco;
+    private String modelo; // Ex: 3, 2025
+    private BigDecimal preco;
     private String cor;
     private String tamanho;
     private String descricao;
     private String especificacoes;
-    private String categoria; // MTB, Gravel, etc.
+    private String categoria; // Ex: MTB, Gravel, etc.
     private String imageUrl;
 
     // Construtor
-    public Bicicleta(String nome, String modelo, double preco, String cor, String tamanho,
+    public Bicicleta(String nome, String modelo, BigDecimal preco, String cor, String tamanho,
                      String descricao, String especificacoes, String categoria, String imageUrl) {
         this.nome = nome;
         this.modelo = modelo;
@@ -34,11 +39,11 @@ public class Bicicleta {
     }
 
     // Getters and Setters
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -58,11 +63,11 @@ public class Bicicleta {
         this.modelo = modelo;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 

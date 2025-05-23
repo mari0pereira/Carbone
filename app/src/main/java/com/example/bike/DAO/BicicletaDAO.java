@@ -6,7 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.bike.models.Bicicleta;
+import com.example.bike.model.Bicicleta;
 import java.util.List;
 
 @Dao

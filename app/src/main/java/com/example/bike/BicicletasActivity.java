@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.bike.api.ApiService;
+import com.example.bike.api.SupabaseRetrofitService;
 import com.example.bike.databinding.ActivityBicicletasBinding;
 import com.example.bike.ui.BicicletaAdapter;
 
@@ -44,7 +44,7 @@ public class BicicletasActivity extends AppCompatActivity {
      */
     private void carregarBicicletas() {
         // Chama a API para buscar as bicicletas
-        ApiService.getBicicletas(categoria, bicicletas -> {
+        SupabaseRetrofitService.getBicicletas(categoria, bicicletas -> {
 
             // Atualiza o adapter com os dados
             adapter.setBicicletas(bicicletas);

@@ -2,7 +2,7 @@ package com.example.bike.ui;
 
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.bike.databinding.ItemBikeBinding;
-import com.example.bike.models.Bicicleta;
+import com.example.bike.model.Bicicleta;
 import java.text.NumberFormat;
 import java.util.Locale;
 

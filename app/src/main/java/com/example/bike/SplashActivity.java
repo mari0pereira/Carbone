@@ -1,13 +1,15 @@
 package com.example.bike;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bike.api.SupabaseRetrofitService;
 import com.example.bike.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
@@ -16,22 +18,25 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
- 
-        // Infla
+
+        // Infla o layout usando ViewBinding
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Aguardar um curto período (para mostrar uma tela de splash)
-        new Handler().postDelayed(() -> {
-            // Verificar se o usuário está logado
+        // Aguarda um curto período para mostrar o splash
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            // Verifica se o usuário está logado usando SharedPreferences
             SharedPreferences prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
             boolean isLoggedIn = prefs.getBoolean("Logado", false);
 
-            // Atualizar o BikeSession com o estado do login
+            // Atualiza o BikeSession com o estado do login
             if (isLoggedIn) {
                 ((BikeSession) getApplication()).login();
+            } else {
+                ((BikeSession) getApplication()).logout();
             }
 
+            // Define a próxima tela
             Intent intent;
             if (isLoggedIn) {
                 // Se estiver logado, vai para MainActivity
@@ -41,6 +46,7 @@ public class SplashActivity extends AppCompatActivity {
                 intent = new Intent(SplashActivity.this, LoginActivity.class);
             }
 
+            // Inicia a próxima atividade e finaliza a splash
             startActivity(intent);
             finish();
         }, 1500); // 1.5 segundos

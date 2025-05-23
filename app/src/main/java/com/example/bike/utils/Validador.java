@@ -2,20 +2,26 @@ package com.example.bike.utils;
 
 import java.util.regex.Pattern;
 
- // Classe para validar as entradas de dados do usuário
+/**
+ * Classe para validar e formatar dados de entrada do usuário
+ * Inclui validações para email, senha e telefone
+ */
+
 public class Validador {
 
     // Validar email
     private static final Pattern EMAIL_PATTERN = Pattern.compile(
-            "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$"
+            "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
     );
-    // Validar senha - mínimo 6 caracteres, pelo menos uma letra e um número
+
+    // Validar senha - pelo menos 6 caracteres, uma maiúscula e um número
     private static final Pattern SENHA_PATTERN = Pattern.compile(
-            "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+            "^(?=.*[A-Z])(?=.*\\d).{6,}$"
     );
-    // Validar de telefone BR no formato (XX)XXXXX-XXXX
+
+    // Telefone BR no formato (XX)XXXXX-XXXX
     private static final Pattern TELEFONE_PATTERN = Pattern.compile(
-            "^\\(\\d{2}\\)\\d{5}-\\d{4}$"
+            "^\\([0-9]{2}\\)[0-9]{5}-[0-9]{4}$"
     );
 
     /**
@@ -24,11 +30,12 @@ public class Validador {
      * @return true se o email é válido, false caso contrário
      */
     public static boolean isEmailValido(String email) {
-        return email != null && EMAIL_PATTERN.matcher(email).matches();
+        return email != null && !email.trim().isEmpty() && EMAIL_PATTERN.matcher(email.trim()).matches();
     }
 
     /**
      * Valida o formato da senha
+     * Deve ter pelo menos 6 caracteres, uma letra maiúscula e um número
      * @param senha Senha a ser validada
      * @return true se a senha é válida, false caso contrário
      */
@@ -37,12 +44,52 @@ public class Validador {
     }
 
     /**
-     * Valida o formato do telefone
+     * Valida o formato do telefone brasileiro
+     * Formato: (XX)XXXXX-XXXX
      * @param telefone Telefone a ser validado
      * @return true se o telefone é válido, false caso contrário
      */
     public static boolean isTelefoneValido(String telefone) {
         return telefone != null && TELEFONE_PATTERN.matcher(telefone).matches();
+    }
+
+    // ============== MÉTODOS PARA FORMATAÇÃO ==============
+
+    /**
+     * Aplica máscara de telefone enquanto o usuário digita
+     * @param telefone Texto atual do campo
+     * @return Texto formatado com máscara (XX)XXXXX-XXXX
+     */
+    public static String aplicarMascaraTelefone(String telefone) {
+        if (telefone == null) return "";
+
+        // Remove todos os caracteres não numéricos
+        String numeros = telefone.replaceAll("[^0-9]", "");
+
+        // Aplica a máscara baseada no tamanho
+        if (numeros.length() == 0) {
+            return "";
+        } else if (numeros.length() <= 2) {
+            return "(" + numeros;
+        } else if (numeros.length() <= 7) {
+            return "(" + numeros.substring(0, 2) + ")" + numeros.substring(2);
+        } else if (numeros.length() <= 11) {
+            return "(" + numeros.substring(0, 2) + ")" +
+                    numeros.substring(2, 7) + "-" + numeros.substring(7);
+        } else {
+            // Limita a 11 dígitos
+            return "(" + numeros.substring(0, 2) + ")" +
+                    numeros.substring(2, 7) + "-" + numeros.substring(7, 11);
+        }
+    }
+
+    /**
+     * Remove a formatação do telefone, deixando apenas números
+     * @param telefone Telefone formatado
+     * @return String com apenas números
+     */
+    public static String limparTelefone(String telefone) {
+        return telefone == null ? "" : telefone.replaceAll("[^0-9]", "");
     }
 
     /**

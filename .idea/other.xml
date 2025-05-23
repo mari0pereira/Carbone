@@ -17,6 +17,17 @@
         <PersistentDeviceSelectionData>
           <option name="api" value="34" />
           <option name="brand" value="OnePlus" />
+          <option name="codename" value="OP535DL1" />
+          <option name="id" value="OP535DL1" />
+          <option name="manufacturer" value="OnePlus" />
+          <option name="name" value="CPH2409" />
+          <option name="screenDensity" value="401" />
+          <option name="screenX" value="1080" />
+          <option name="screenY" value="2412" />
+        </PersistentDeviceSelectionData>
+        <PersistentDeviceSelectionData>
+          <option name="api" value="34" />
+          <option name="brand" value="OnePlus" />
           <option name="codename" value="OP5552L1" />
           <option name="id" value="OP5552L1" />
           <option name="manufacturer" value="OnePlus" />
@@ -49,22 +60,22 @@
         </PersistentDeviceSelectionData>
         <PersistentDeviceSelectionData>
           <option name="api" value="34" />
-          <option name="brand" value="Lenovo" />
-          <option name="codename" value="TB370FU" />
-          <option name="id" value="TB370FU" />
-          <option name="manufacturer" value="Lenovo" />
-          <option name="name" value="Tab P12" />
-          <option name="screenDensity" value="340" />
-          <option name="screenX" value="1840" />
-          <option name="screenY" value="2944" />
-        </PersistentDeviceSelectionData>
-        <PersistentDeviceSelectionData>
-          <option name="api" value="34" />
           <option name="brand" value="samsung" />
           <option name="codename" value="a15" />
           <option name="id" value="a15" />
           <option name="manufacturer" value="Samsung" />
           <option name="name" value="A15" />
+          <option name="screenDensity" value="450" />
+          <option name="screenX" value="1080" />
+          <option name="screenY" value="2340" />
+        </PersistentDeviceSelectionData>
+        <PersistentDeviceSelectionData>
+          <option name="api" value="34" />
+          <option name="brand" value="samsung" />
+          <option name="codename" value="a15x" />
+          <option name="id" value="a15x" />
+          <option name="manufacturer" value="Samsung" />
+          <option name="name" value="A15 5G" />
           <option name="screenDensity" value="450" />
           <option name="screenX" value="1080" />
           <option name="screenY" value="2340" />
@@ -564,6 +575,17 @@
           <option name="screenDensity" value="420" />
           <option name="screenX" value="1080" />
           <option name="screenY" value="2424" />
+        </PersistentDeviceSelectionData>
+        <PersistentDeviceSelectionData>
+          <option name="api" value="34" />
+          <option name="brand" value="samsung" />
+          <option name="codename" value="xcover7" />
+          <option name="id" value="xcover7" />
+          <option name="manufacturer" value="Samsung" />
+          <option name="name" value="SM-G556B" />
+          <option name="screenDensity" value="450" />
+          <option name="screenX" value="1080" />
+          <option name="screenY" value="2408" />
         </PersistentDeviceSelectionData>
       </list>
     </option>

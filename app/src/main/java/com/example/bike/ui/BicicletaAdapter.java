@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.bike.databinding.ItemBikeBinding;
-import com.example.bike.models.Bicicleta;
+import com.example.bike.model.Bicicleta;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -18,6 +18,5 @@ dependencyResolutionManagement {
     }
 }
 
-
 rootProject.name = "bike"
 include(":app")
