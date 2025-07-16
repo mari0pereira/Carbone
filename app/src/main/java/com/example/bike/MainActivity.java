@@ -6,8 +6,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bike.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -16,9 +14,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Verifica se o usuário está logado
+        // Verifica o login usando apenas BikeSession
         BikeSession bikeSession = (BikeSession) getApplication();
         if (!bikeSession.isLoggedIn()) {
+            // Se não estiver logado, vai para LoginActivity
             startActivity(new Intent(this, LoginActivity.class));
             finish();
             return;
@@ -27,19 +26,5 @@ public class MainActivity extends AppCompatActivity {
         // Configura o ViewBinding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        // Direciona para a página Mountain Bike
-        binding.btnMTB.setOnClickListener(v -> {
-            Intent intent = new Intent(this, BicicletasActivity.class);
-            intent.putExtra("categoria", "Mountain Bike");
-            startActivity(intent);
-        });
-
-        // Direciona para a página Gravel
-        binding.btnGravel.setOnClickListener(v -> {
-            Intent intent = new Intent(this, BicicletasActivity.class);
-            intent.putExtra("categoria", "Gravel");
-            startActivity(intent);
-        });
     }
 }

@@ -53,8 +53,6 @@ public class Validador {
         return telefone != null && TELEFONE_PATTERN.matcher(telefone).matches();
     }
 
-    // ============== MÉTODOS PARA FORMATAÇÃO ==============
-
     /**
      * Aplica máscara de telefone enquanto o usuário digita
      * @param telefone Texto atual do campo
@@ -83,14 +81,6 @@ public class Validador {
         }
     }
 
-    /**
-     * Remove a formatação do telefone, deixando apenas números
-     * @param telefone Telefone formatado
-     * @return String com apenas números
-     */
-    public static String limparTelefone(String telefone) {
-        return telefone == null ? "" : telefone.replaceAll("[^0-9]", "");
-    }
 
     /**
      * Gera o hash de uma senha usando PasswordUtils

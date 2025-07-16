@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/calistoga</item>
+        <item>@font/inter</item>
+        <item>@font/inter_medium</item>
+        <item>@font/lato</item>
+        <item>@font/lato_black</item>
+        <item>@font/lato_bold</item>
+        <item>@font/space_grotesk</item>
+        <item>@font/space_grotesk_bold</item>
+        <item>@font/space_grotesk_medium</item>
+    </array>
+</resources>

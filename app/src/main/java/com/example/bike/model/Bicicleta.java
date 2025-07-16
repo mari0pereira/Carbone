@@ -1,32 +1,22 @@
 package com.example.bike.model;
 
-import androidx.room.*;
-import androidx.room.TypeConverters;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.math.BigDecimal;
 
-@Entity(tableName = "bicicletas")
-@TypeConverters({Conversor.class})
 public class Bicicleta {
-    @PrimaryKey
-    @NotNull
-
     private String id;
     private String nome;
-    private String modelo; // Ex: 3, 2025
+    private String modelo;
     private BigDecimal preco;
     private String cor;
     private String tamanho;
     private String descricao;
     private String especificacoes;
-    private String categoria; // Ex: MTB, Gravel, etc.
-    private String imageUrl;
+    private String categoria;
+    private String imagem;
 
     // Construtor
     public Bicicleta(String nome, String modelo, BigDecimal preco, String cor, String tamanho,
-                     String descricao, String especificacoes, String categoria, String imageUrl) {
+                     String descricao, String especificacoes, String categoria, String imagem) {
         this.nome = nome;
         this.modelo = modelo;
         this.preco = preco;
@@ -35,7 +25,7 @@ public class Bicicleta {
         this.descricao = descricao;
         this.especificacoes = especificacoes;
         this.categoria = categoria;
-        this.imageUrl = imageUrl;
+        this.imagem = imagem;
     }
 
     // Getters and Setters
@@ -112,10 +102,10 @@ public class Bicicleta {
     }
 
     public String getImageUrl() {
-        return imageUrl;
+        return imagem;
     }
 
     public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+        this.imagem = imageUrl;
     }
 }

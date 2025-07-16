@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "572684025789",
-    "project_id": "carbone-add0f",
-    "storage_bucket": "carbone-add0f.firebasestorage.app"
+    "project_number": "9264488313",
+    "project_id": "carbone-4f993",
+    "storage_bucket": "carbone-4f993.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:572684025789:android:6605364218ef366017dcd4",
+        "mobilesdk_app_id": "1:9264488313:android:63ec6ddac1799cbf7ad9a8",
         "android_client_info": {
           "package_name": "com.example.bike"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDq7gFPH0OJWejEQlpHBxAP0EXjVJzvSe8"
+          "current_key": "AIzaSyD8dh4Hxxg7ddELgeioudoL80u51fGKstg"
         }
       ],
       "services": {

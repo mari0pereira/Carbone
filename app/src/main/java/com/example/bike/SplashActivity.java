@@ -1,15 +1,12 @@
 package com.example.bike;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bike.api.SupabaseRetrofitService;
 import com.example.bike.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
@@ -25,16 +22,9 @@ public class SplashActivity extends AppCompatActivity {
 
         // Aguarda um curto período para mostrar o splash
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            // Verifica se o usuário está logado usando SharedPreferences
-            SharedPreferences prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
-            boolean isLoggedIn = prefs.getBoolean("Logado", false);
-
-            // Atualiza o BikeSession com o estado do login
-            if (isLoggedIn) {
-                ((BikeSession) getApplication()).login();
-            } else {
-                ((BikeSession) getApplication()).logout();
-            }
+            // Verifica se o usuário está logado usando apenas BikeSession
+            BikeSession bikeSession = (BikeSession) getApplication();
+            boolean isLoggedIn = bikeSession.isLoggedIn();
 
             // Define a próxima tela
             Intent intent;

@@ -1,58 +1,40 @@
 package com.example.bike;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bike.api.SupabaseRetrofitService;
+import com.example.bike.api.FirebaseService;
 import com.example.bike.databinding.ActivityLoginBinding;
 import com.example.bike.utils.Validador;
 
-/**
- * Activity responsável pelo processo de autenticação do usuário
- * Realiza login e gerencia o redirecionamento para telas adequadas
- */
+import java.util.Map;
+
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
-    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Inicializa o serviço do Supabase
-        SupabaseRetrofitService.init(getApplicationContext());
-
-        prefs = getSharedPreferences("BikeAppPrefs", MODE_PRIVATE);
-
-        // Inicializa o ViewBinding
+        // Configura o ViewBinding
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Configura os listeners dos botões
-        configurarListeners();
-    }
-
-    private void configurarListeners() {
-        // Botão de login
+        // Configura os click dos botões
         binding.btnLogin.setOnClickListener(v -> realizarLogin());
         binding.textViewCadastro.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(this, CadastroActivity.class));
         });
     }
 
-    /**
-     * Realiza o processo de autenticação do usuário
-     * Valida os campos e autentica no Supabase
-     */
     private void realizarLogin() {
         String email = binding.editTextEmail.getText().toString().trim();
         String senha = binding.editTextSenha.getText().toString().trim();
-        // OBS: trim() remove espaços em branco
 
+        // Validação dos campos
         if (email.isEmpty() || senha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
@@ -63,49 +45,41 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Desativa o botão durante o processo para evitar vários clicks
+        // Desabilita o botão e mostra o loading
         binding.btnLogin.setEnabled(false);
+        binding.progressBar.setVisibility(View.VISIBLE);
 
-        // Tenta fazer login no Supabase
-        SupabaseRetrofitService.login(email, senha, usuario -> {
-            runOnUiThread(() -> {
-                // Reativa o botão
-                binding.btnLogin.setEnabled(true);
+        // Realiza o login usando o FirebaseService
+        FirebaseService.login(this, email, senha, new FirebaseService.Callback() {
+            @Override
+            public void onSuccess(Map<String, Object> userData) {
+                runOnUiThread(() -> {
+                    binding.progressBar.setVisibility(View.GONE);
+                    binding.btnLogin.setEnabled(true);
 
-                if (usuario != null) {
-                    // Login realizado com sucesso
-                    LoginSucesso(usuario);
-                } else {
-                    // Dados inválidos
-                    Toast.makeText(LoginActivity.this, "Email ou senha incorretos", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    // Atualiza a sessão
+                    BikeSession bikeSession = (BikeSession) getApplication();
+                    bikeSession.login();
+
+                    // Mostra mensagem de sucesso
+                    Toast.makeText(LoginActivity.this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
+
+                    // Redireciona para MainActivity
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                });
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                runOnUiThread(() -> {
+                    binding.progressBar.setVisibility(View.GONE);
+                    binding.btnLogin.setEnabled(true);
+                    Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                });
+            }
         });
-    }
-
-    /**
-     * Processa o login bem-sucedido e salva os dados do usuário
-     * @param usuario Objeto usuário retornado pela API
-     */
-    private void LoginSucesso(com.example.bike.model.Usuario usuario) {
-        // Atualiza o estado de login no BikeSession (classe global)
-        ((BikeSession) getApplication()).login();
-
-        // Salva as informações do usuário no SharedPreferences
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("Logado", true);
-        editor.putString("UsuarioId", usuario.getId());
-        editor.putString("UsuarioAuthId", usuario.getAuthUid());
-        editor.putString("UsuarioNome", usuario.getNome());
-        editor.putString("UsuarioEmail", usuario.getEmail());
-        editor.putString("UsuarioTipo", usuario.getTipoUsuario());
-        editor.apply(); // Salva as alterações
-
-        // Redireciona para a tela principal
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        // Limpa o stack de activities para que o usuário não volte para o login
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish(); // Finaliza a LoginActivity
     }
 }

@@ -12,6 +12,6 @@
         android:layout_height="350dp"
         android:src="@drawable/carbone"
         app:tint="@color/white"
-        android:contentDescription="Logo Sense Bike" />
+        android:contentDescription="Logo Carbone" />
 
 </LinearLayout>

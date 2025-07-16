@@ -1,57 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/dark_gradient"
     android:gravity="center"
-    android:padding="24dp"
-    android:background="@drawable/dark_gradient">
+    android:orientation="vertical"
+    android:padding="24dp">
 
     <ImageView
         android:layout_width="350dp"
         android:layout_height="250dp"
-        android:src="@drawable/carbone"
-        app:tint="@color/black"
         android:layout_marginBottom="30dp"
-        android:contentDescription="Logo Sense Bike" />
+        android:contentDescription="Logo Sense Bike"
+        android:src="@drawable/carbone"
+        app:tint="@color/black" />
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/edit_text_background"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:padding="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/edit_text_background"/>
+        android:padding="16dp" />
 
     <EditText
         android:id="@+id/editTextSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/edit_text_background"
         android:hint="Senha"
         android:inputType="textPassword"
-        android:padding="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/edit_text_background"/>
+        android:padding="16dp" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:padding="12dp"
         android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:text="Entrar"
         android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textViewCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:text="Não tem uma conta? Cadastre-se"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:padding="8dp"/>
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:alpha="0"
+        tools:visibility="visible" />
 
 </LinearLayout>
